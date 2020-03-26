@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <link rel="icon" class="dark" href="favicon_dark.ico" type="image/x-icon">
+        <link rel="icon" class="light" href="favicon_light.ico" type="image/x-icon">
+        <title>Favicon test</title>
+        <script type="text/javascript">
+        const links = collectLinks();
+        let theme = 'dark';
+
+        function collectLinks() {
+            return Array.prototype.slice.apply(
+            document.head.querySelectorAll('link[rel*="icon"]')
+            )
+        }
+
+        function  toggleSetting() {
+            theme = (theme==='dark'?'light':'dark');
+            for(i=0;i<links.length;i++) {
+                const link = links[i];
+                if (link.classList.value !== theme) {
+                    document.head.removeChild(link);
+                } else {
+                    document.head.appendChild(link);
+                }
+            }
+        }
+        </script>
+    <body>
+        <h1>Testing this Favicon <a href="https://daily-dev-tips.com">Read more</a>
+        <br /><br />
+        <button onclick="toggleSetting()">Toggle</button>
+    </body>
+</html>
